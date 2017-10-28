@@ -9,10 +9,9 @@
 @foreach ($items as $item)
     @php
         if($item->title === 'Hooks'
-            && config('voyager-hooks.disable_in_production', false)
+            && config('voyager-hooks.disable', false)
             && $item->icon_class === 'voyager-hook'
             && $item->route === null
-            && config('app.env', 'production') === 'production'
         ){
             continue;
         }
