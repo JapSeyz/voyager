@@ -3,19 +3,20 @@
 namespace TCG\Voyager\Models;
 
 use Carbon\Carbon;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use TCG\Voyager\Contracts\User as UserContract;
 use TCG\Voyager\Traits\VoyagerUser;
+use TCG\Voyager\Traits\RelationshipCache;
+use TCG\Voyager\Contracts\User as UserContract;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements UserContract
 {
-    use VoyagerUser;
+    use VoyagerUser, RelationshipCache;
 
     protected $guarded = [];
 
     public function getAvatarAttribute($value)
     {
-        if (is_null($value)) {
+        if (\is_null($value)) {
             return config('voyager.user.default_avatar', 'users/default.png');
         }
 
