@@ -2,11 +2,14 @@
 
 namespace TCG\Voyager\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\Facades\Voyager;
+use Illuminate\Database\Eloquent\Model;
+use TCG\Voyager\Traits\RelationshipCache;
 
 class Role extends Model
 {
+    use RelationshipCache;
+
     protected $guarded = [];
     protected static $relationships = [];
 
